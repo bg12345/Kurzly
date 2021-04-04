@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script type="text/javascript">
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+});
+</script>
+</head>
+<body>
+
+<script>
+function shorturl()
+        {
+            $.post("http://127.0.0.1:5000/",
+                   {
+                      url:document.getElementById('original_link').value
+                   },
+                   function(s)
+                          {
+                             document.getElementById('output_link').value=s.shorturl;
+                          });
+        }
+</script>
+
+
+<!-- NAVBAR -->
+
+<div class="nav">
+    <ul class="menu">
+        <li class="logo"><a href="#">Logo</a></li>
+        <li class="item"><a href="#">Why Kruzly</a></li>
+        <li class="item"><a href="#">About</a></li>
+        <li class="item has-submenu">
+            <a tabindex="0">Services</a>
+            <ul class="submenu">
+                <li class="subitem"><a href="#">Service 1</a></li>
+                <li class="subitem"><a href="#">Service 2</a></li>
+                <li class="subitem"><a href="#">Service 3</a></li>
+            </ul>
+        </li>
+        <li class="item has-submenu">
+            <a tabindex="0">Resources</a>
+            <ul class="submenu">
+                <li class="subitem"><a href="#">Resource 1</a></li>
+                <li class="subitem"><a href="#">Resource 2</a></li>
+                <li class="subitem"><a href="#">Resource 3</a></li>
+            </ul>
+        </li>
+        <li class="item"><a href="#">Blog</a></li>
+        <li class="item"><a href="#">Contact</a>
+        </li>
+        <li class="item button show_sign_in"><a href="#">Log In</a></li>
+        <li class="item button secondary show_sign_up"><a href="#">Sign Up</a></li>
+        <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+    </ul>
+</div>
+<div style="color: black">
+    <p>hello</p>
+    <p>hello</p>
+    <p>hello</p>
+</div>
+
+<!-- HEADER -->
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xs-8 header_heading">
+                <h1 id="first_heading" style="float: left; text-align: center;">A Catchy Quote</h1>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <img src="header.png" id="header_img" style="float: right;">
+            </div>
+            <div class="col-md-6 col-xs-8 header_heading">
+                <h1 id="second_heading" style="float: left; text-align: center;">A Catchy Quote</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Links -->
+    <div id="link_input_div">
+        <input type="text" name="" id="original_link" placeholder="Enter the link">
+        <p id="shorten_link_btn" onclick="shorturl()">Shorten link</p>
+        <div><span id="link_terms_and_condition">By clicking Shorten link you are agreeing to our <strong style="color: #fc0">Terms and Services</strong></span><p></p><p></p></div>
+
+    </div>
+  
+    
+    <div id="link_output_div">
+        <input type="text" name="" id="output_link">
+        <p id="copy_link_btn">Copy link</p>
+    </div>
+</div>
+
+<!-- Sign UP -->
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div id="sign_up_div">
+        <form  id="sign_up_form" name="myform"  novalidate>
+            <p id="sign_up_form_cancel"><span id="hide_sign_up">x</span></p>
+            <div class="" style="margin-top: 10px;">
+                <input class="form-inputs" placeholder="First Name" type="text"
+                name="name" height="40" ng-model="name" required>
+                <p style="color:#fc0;font-size: 16px;"ng-show="myform.name.$error.required&&
+                myform.name.$dirty && myform.name.$invalid">This field is required</p>
+            </div>
+        
+
+        
+            <div class="" style="margin-top: 10px;">
+                <input class="form-inputs" placeholder="Last Name" type="text"
+                name="last_name" ng-model="last_name" required>
+                <p style="color:#fc0;font-size: 16px;"ng-show="myform.last_name.$error.required&&
+                myform.last_name.$dirty && myform.last_name.$invalid">This field is required</p>
+            </div>
+        
+
+        
+            <div class="" style="margin-top: 10px;">
+                <input class="form-inputs" placeholder="Email Address" type="email"
+                name="email" ng-model="email" required>
+                <p style="color:#fc0" ng-show="myform.email.$dirty && myform.email.$invalid">
+                    <span style="font-size: 16px;" ng-show="myform.email.$error.required">This field is
+                    required</span>
+                    <span style="font-size: 16px;" ng-show="myform.email.$error.email">Please enter a valid email
+                    address</span>
+                </p>
+            </div>
+        
+        
+            <div class="" style="margin-top: 10px;">
+                <input class="form-inputs" placeholder="Password" type="text"
+                name="password" ng-model="password"required>
+                <p style="color:#fc0" ng-show="myform.password.$dirty && myform.password.$invalid">
+                    <span style="font-size: 16px;" ng-show="myform.password.$error.required">This field is
+                    required</span>
+                </p>
+            </div>
+        
+
+        
+            <div class="" style="margin-top: 10px;">
+                <input type="button"class="form_submit" value="Sign UP"> 
+            </div>
+        
+            <div class="" style=" text-align: center;">
+                <span style="font-size: 10px;font-family: sans-serif;color:#bfbbbb ">By clicking the button you are agreeing to our <strong style="color: #fc0">Terms and Services</strong></span>
+            </div>
+        </form>
+    </div>
+
+
+<!-- Sign IN -->
+    <div id="sign_in_div">
+            <form  id="sign_in_form" name="myform1"  novalidate>
+                
+                
+                    <p id="sign_in_form_cancel"><span id="hide_sign_in">x</span></p>
+                    <div class="" style="margin-top: 10px;">
+                        <input class="form-inputs" placeholder="Email Address" type="email"
+                        name="email" ng-model="email" required>
+                        <p style="color:#fc0" ng-show="myform1.email.$dirty && myform.email.$invalid">
+                            <span style="font-size: 16px;" ng-show="myform1.email.$error.required">This field is
+                            required</span>
+                            <span style="font-size: 16px;" ng-show="myform1.email.$error.email">Please enter a valid email
+                            address</span>
+                        </p>
+                    </div>
+                
+                
+                    <div class="" style="margin-top: 10px;">
+                        <input class="form-inputs" placeholder="Password" type="text"
+                        name="password" ng-model="password"required>
+                        <p style="color:#fc0" ng-show="myform1.password.$dirty && myform1.password.$invalid">
+                            <span style="font-size: 16px;" ng-show="myform1.password.$error.required">This field is
+                            required</span>
+                        </p>
+                    </div>
+                
+
+                
+                    <div class="" style="margin-top: 10px;">
+                        <input type="button"class="form_submit" value="Log IN"> 
+                    </div>
+                
+                    <div class="" style=" text-align: center; border-bottom: 1px solid grey;padding-bottom: 20px;">
+                        <span style="font-size: 10px;font-family: sans-serif;color:#bfbbbb ">By clicking the button you are agreeing to our <strong style="color: #fc0">Terms and Services</strong></span>
+                    </div>
+                    <div style="color: #fc0;padding-top: 20px;cursor: pointer;">Forgot Password ?</div>
+                    <div style="color: #fc0;padding-top: 10px;cursor: pointer;" class="show_sign_up">New User ? <span  ">Sign UP</span></div>
+                
+            </form>
+    </div>
+</div>
+<!-- CONTENT -->
+    <div class="container">
+        <div class="row row1">
+            <div data-aos="fade-down"  class="col-md-3 col-xs-8 content">
+                <img src="test.jpg">
+                <br><br>
+                <h2 >Inspire Trust</h2>
+                <p>With more clicks comes increased brand recognition and consumer trust in your communications—which in turn inspires even more engagement with your links. (It’s a wonderful cycle.)</p>
+            </div>
+            <div data-aos="fade-down"class="col-md-3 col-xs-8 content">
+                <img src="test.jpg">
+                <br><br>
+                <h2 >Boost results</h2>
+                <p>On top of better deliverability and click-through, rich link-level data gives you crucial insight into your link engagement so your team can make smarter decisions around its content and communications.</p>
+            </div>
+            <div data-aos="fade-down"class="col-md-3 col-xs-8 content">
+                <img src="test.jpg">
+                <br><br>
+                <h2 >Gain control</h2>
+                <p>Take credit for your content and learn more about how it’s consumed by enabling auto-branding—a feature that ensures your brand remains in any link someone shortens pointing to your website.</p>
+            </div>
+        </div>
+        
+
+        <div class="row row2">
+            <div data-aos="fade-down"><h1 class="content-heading">About</h1></div>
+            
+            <div data-aos="fade-down"  class="col-md-3 col-xs-8 content">
+                <img src="test.jpg">
+                <br><br>
+                <h2 >Inspire Trust</h2>
+                <p>With more clicks comes increased brand recognition and consumer trust in your communications—which in turn inspires even more engagement with your links. (It’s a wonderful cycle.)</p>
+            </div>
+            <div data-aos="fade-down"class="col-md-3 col-xs-8 content">
+                <img src="test.jpg">
+                <br><br>
+                <h2 >Boost results</h2>
+                <p>On top of better deliverability and click-through, rich link-level data gives you crucial insight into your link engagement so your team can make smarter decisions around its content and communications.</p>
+            </div>
+            <div data-aos="fade-down"class="col-md-3 col-xs-8 content">
+                <img src="test.jpg">
+                <br><br>
+                <h2 >Gain control</h2>
+                <p>Take credit for your content and learn more about how it’s consumed by enabling auto-branding—a feature that ensures your brand remains in any link someone shortens pointing to your website.</p>
+            </div>
+        </div>
+    </div> 
+
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container" style="text-align: center;">
+        <div class="row">
+            <div class="col-md-2 col-xs-6 footerContent">
+               <p style="color: #fc0;font-size:22px"> Why Kurzly</p>
+                <ul style="list-style-type: none;">
+                    <li><a href="">Item1</a></li>
+                    <li><a href="">Item2</a></li>
+                    <li><a href="">Item3</a></li>
+                    <li><a href="">Item4</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6 footerContent">
+               <p style="color: #fc0;font-size:22px"> About</p>
+                <ul style="list-style-type: none;">
+                    <li><a href="">Item1</a></li>
+                    <li><a href="">Item2</a></li>
+                    <li><a href="">Item3</a></li>
+                    <li><a href="">Item4</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6 footerContent">
+               <p style="color: #fc0;font-size:22px"> Services</p>
+                <ul style="list-style-type: none;">
+                    <li><a href="">Item1</a></li>
+                    <li><a href="">Item2</a></li>
+                    <li><a href="">Item3</a></li>
+                    <li><a href="">Item4</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6 footerContent">
+               <p style="color: #fc0;font-size:22px"> Resources</p>
+                <ul style="list-style-type: none;">
+                    <li><a href="">Item1</a></li>
+                    <li><a href="">Item2</a></li>
+                    <li><a href="">Item3</a></li>
+                    <li><a href="">Item4</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6 footerContent">
+               <p style="color: #fc0;font-size:22px"> Contact</p>
+                <ul style="list-style-type: none;">
+                    <li><a href="">Item1</a></li>
+                    <li><a href="">Item2</a></li>
+                    <li><a href="">Item3</a></li>
+                    <li><a href="">Item4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+offset:100,
+delay:0,
+duration: 1700
+});
+
+
+
+</script>
+<script src="index.js"></script>
+</body>
+</html>
